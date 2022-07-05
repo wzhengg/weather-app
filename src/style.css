@@ -6,7 +6,9 @@
     --slate-200: #e2e8f0;
     --slate-400: #94a3b8;
     --slate-700: #334155;
+    --header-logo-size: 40px;
     --search-border-radius: 4px;
+    --search-btn-size: 30px;
 }
 
 html, body {
@@ -22,13 +24,20 @@ body {
 
 #header {
     background-color: var(--slate-700);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+.logo {
+    background-image: url('./img/weather-logo.svg');
+    background-size: contain;
+    height: var(--header-logo-size);
+    width: var(--header-logo-size);
 }
 
 .search {
+    justify-self: center;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -65,8 +74,8 @@ input[type="search"] {
     background-color: #60a5fa;
     background-image: url('./img/magnify.svg');
     background-size: contain;
-    height: 30px;
-    width: 30px;
+    height: var(--search-btn-size);
+    width: var(--search-btn-size);
     border-radius: var(--search-border-radius);
 }
 
