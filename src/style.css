@@ -1,9 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&display=swap');
 
 :root {
     font-size: 16px;
+    --slate-100: #f1f5f9;
     --slate-200: #e2e8f0;
+    --slate-400: #94a3b8;
     --slate-700: #334155;
+    --search-border-radius: 4px;
 }
 
 html, body {
@@ -12,13 +15,59 @@ html, body {
 
 body {
     margin: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     display: grid;
     grid-template-rows: 60px 1fr;
 }
 
 #header {
     background-color: var(--slate-700);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+input[type="search"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#search-bar {
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--slate-700);
+    background-color: var(--slate-200);
+    border: none;
+    border-radius: var(--search-border-radius);
+    height: 30px;
+    width: 300px;
+    padding: 4px;
+}
+
+#search-bar::placeholder {
+    color: var(--slate-400);
+}
+
+#search-bar:focus {
+    outline: none;
+    background-color: var(--slate-100);
+}
+
+.search-btn {
+    background-color: #60a5fa;
+    background-image: url('./img/magnify.svg');
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+    border-radius: var(--search-border-radius);
 }
 
 #main {
