@@ -1,10 +1,18 @@
 import PubSub from "pubsub-js";
-import { FETCH_WEATHER_ERROR, WEATHER_DATA_UPDATED } from "./pubsubTopics";
+import {
+  FETCH_WEATHER_ERROR,
+  SEARCHED_LOCATION,
+  WEATHER_DATA_UPDATED,
+} from "./pubsubTopics";
 import { getWeather, processData } from "./weatherAPI";
 
 let data;
 
-export default async function updateData(location) {
+export default function initWeatherData() {
+  PubSub.subscribe(SEARCHED_LOCATION, updateData);
+}
+
+async function updateData(_topic, location) {
   try {
     const rawData = await getWeather(location);
     data = processData(rawData);
@@ -14,4 +22,4 @@ export default async function updateData(location) {
   }
 }
 
-updateData("San Francisco");
+updateData(null, "San Francisco");
