@@ -1,8 +1,8 @@
 const key = "d019f4b4f48d1bf8c740870e85e4ac56";
 
-export async function getWeather(location) {
+export async function getWeather(location, units) {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${key}&units=imperial`
+    `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${key}&units=${units}`
   );
   return response.json();
 }
