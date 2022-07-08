@@ -4,6 +4,7 @@
     font-size: 16px;
     --slate-100: #f1f5f9;
     --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
     --slate-400: #94a3b8;
     --slate-700: #334155;
     --header-logo-size: 40px;
@@ -80,5 +81,47 @@ input[type="search"] {
 }
 
 #main {
+    background-color: var(--slate-300);
+    padding: 50px 400px;
+}
+
+.weather-card {
     background-color: var(--slate-200);
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+    column-gap: 50px;
+    align-items: center;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px var(--slate-400);
+}
+
+.main-temp {
+    grid-area: 1 / 2 / 3 / 3;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.location {
+    font-size: 3rem;
+}
+
+.temp {
+    font-size: 4rem;
+}
+
+.feels-like {
+    font-size: 1.5rem;
+}
+
+.desc {
+    font-size: 2rem;
+}
+
+.high, .low, .wind, .humidity {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
 }
