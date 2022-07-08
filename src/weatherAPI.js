@@ -11,7 +11,8 @@ export function processData(data) {
   return {
     city: data.name,
     country: data.sys.country,
-    desc: data.weather[0].main,
+    descID: data.weather[0].id,
+    desc: data.weather[0].description,
     temp: Math.round(data.main.temp),
     feelsLike: Math.round(data.main.feels_like),
     high: Math.round(data.main.temp_max),
