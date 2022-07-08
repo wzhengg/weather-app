@@ -1,3 +1,5 @@
+import PubSub from "pubsub-js";
+import { UNITS_CHANGED } from "./pubsubTopics";
 import { imperialBtn, metricBtn } from "./domElements";
 
 const IMPERIAL = "imperial";
@@ -15,6 +17,7 @@ function select(units) {
     return;
   }
   selected = units;
+  PubSub.publish(UNITS_CHANGED);
   updateDisplay();
 }
 
@@ -26,4 +29,8 @@ function updateDisplay() {
     imperialBtn.classList.remove("selected");
     metricBtn.classList.add("selected");
   }
+}
+
+export function units() {
+  return selected;
 }
