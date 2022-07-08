@@ -12,11 +12,11 @@ export function processData(data) {
     city: data.name,
     country: data.sys.country,
     desc: data.weather[0].main,
-    temp: data.main.temp,
-    feelsLike: data.main.feels_like,
-    high: data.main.temp_max,
-    low: data.main.temp_min,
-    wind: data.wind.speed,
+    temp: Math.round(data.main.temp),
+    feelsLike: Math.round(data.main.feels_like),
+    high: Math.round(data.main.temp_max),
+    low: Math.round(data.main.temp_min),
+    wind: Math.round(data.wind.speed),
     humidity: data.main.humidity,
   };
 }
