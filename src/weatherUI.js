@@ -1,5 +1,9 @@
 import PubSub from "pubsub-js";
-import { UNITS_CHANGED, WEATHER_DATA_UPDATED } from "./pubsubTopics";
+import {
+  FETCH_WEATHER_ERROR,
+  UNITS_CHANGED,
+  WEATHER_DATA_UPDATED,
+} from "./pubsubTopics";
 import {
   location,
   mainTemp,
@@ -11,7 +15,7 @@ import {
   lowTemp,
   humidityPercent,
 } from "./domElements";
-import { units } from "./units";
+import { getUnits } from "./units";
 import thunderIcon from "./img/weather-lightning.svg";
 import rainIcon from "./img/weather-rain.svg";
 import snowIcon from "./img/weather-snow.svg";
@@ -20,6 +24,7 @@ import sunIcon from "./img/weather-sun.svg";
 import cloudIcon from "./img/weather-cloudy.svg";
 
 const DEGREE_SIGN = "\xB0";
+
 let tempUnit;
 let speedUnit;
 
@@ -27,6 +32,7 @@ export default function initWeatherUI() {
   updateUnits();
   PubSub.subscribe(UNITS_CHANGED, updateUnits);
   PubSub.subscribe(WEATHER_DATA_UPDATED, displayWeather);
+  PubSub.subscribe(FETCH_WEATHER_ERROR, displayError);
 }
 
 function displayWeather(_topic, data) {
@@ -58,11 +64,15 @@ function updateDescIcon(id) {
 }
 
 function updateUnits() {
-  if (units() === "imperial") {
+  if (getUnits() === "imperial") {
     tempUnit = `${DEGREE_SIGN}F`;
     speedUnit = "mph";
   } else {
     tempUnit = `${DEGREE_SIGN}C`;
     speedUnit = "km/h";
   }
+}
+
+function displayError() {
+  alert("Could not find location");
 }
