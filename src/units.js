@@ -6,10 +6,14 @@ const IMPERIAL = "imperial";
 const METRIC = "metric";
 let selected;
 
-export default function initUnits() {
-  select(IMPERIAL);
-  imperialBtn.addEventListener("click", () => select(IMPERIAL));
-  metricBtn.addEventListener("click", () => select(METRIC));
+function updateDisplay() {
+  if (selected === IMPERIAL) {
+    metricBtn.classList.remove("selected");
+    imperialBtn.classList.add("selected");
+  } else {
+    imperialBtn.classList.remove("selected");
+    metricBtn.classList.add("selected");
+  }
 }
 
 function select(units) {
@@ -21,16 +25,12 @@ function select(units) {
   updateDisplay();
 }
 
-function updateDisplay() {
-  if (selected === IMPERIAL) {
-    metricBtn.classList.remove("selected");
-    imperialBtn.classList.add("selected");
-  } else {
-    imperialBtn.classList.remove("selected");
-    metricBtn.classList.add("selected");
-  }
+export default function initUnits() {
+  select(IMPERIAL);
+  imperialBtn.addEventListener("click", () => select(IMPERIAL));
+  metricBtn.addEventListener("click", () => select(METRIC));
 }
 
-export function units() {
+export function getUnits() {
   return selected;
 }

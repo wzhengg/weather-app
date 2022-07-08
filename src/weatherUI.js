@@ -28,11 +28,13 @@ const DEGREE_SIGN = "\xB0";
 let tempUnit;
 let speedUnit;
 
-export default function initWeatherUI() {
-  updateUnits();
-  PubSub.subscribe(UNITS_CHANGED, updateUnits);
-  PubSub.subscribe(WEATHER_DATA_UPDATED, displayWeather);
-  PubSub.subscribe(FETCH_WEATHER_ERROR, displayError);
+function setIcon(id) {
+  if (id >= 200 && id < 300) descIcon.src = thunderIcon;
+  else if (id >= 300 && id < 500) descIcon.src = rainIcon;
+  else if (id >= 600 && id < 700) descIcon.src = snowIcon;
+  else if (id >= 700 && id < 800) descIcon.src = fogIcon;
+  else if (id === 800) descIcon.src = sunIcon;
+  else descIcon.src = cloudIcon;
 }
 
 function displayWeather(_topic, data) {
@@ -44,23 +46,7 @@ function displayWeather(_topic, data) {
   lowTemp.textContent = `${data.low} ${tempUnit}`;
   windSpeed.textContent = `${data.wind} ${speedUnit}`;
   humidityPercent.textContent = `${data.humidity}%`;
-  updateDescIcon(data.descID);
-}
-
-function updateDescIcon(id) {
-  if (id >= 200 && id < 300) {
-    descIcon.src = thunderIcon;
-  } else if (id >= 300 && id < 500) {
-    descIcon.src = rainIcon;
-  } else if (id >= 600 && id < 700) {
-    descIcon.src = snowIcon;
-  } else if (id >= 700 && id < 800) {
-    descIcon.src = fogIcon;
-  } else if (id === 800) {
-    descIcon.src = sunIcon;
-  } else {
-    descIcon.src = cloudIcon;
-  }
+  setIcon(data.descID);
 }
 
 function updateUnits() {
@@ -75,4 +61,11 @@ function updateUnits() {
 
 function displayError() {
   alert("Could not find location");
+}
+
+export default function initWeatherUI() {
+  updateUnits();
+  PubSub.subscribe(UNITS_CHANGED, updateUnits);
+  PubSub.subscribe(WEATHER_DATA_UPDATED, displayWeather);
+  PubSub.subscribe(FETCH_WEATHER_ERROR, displayError);
 }
