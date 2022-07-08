@@ -1,6 +1,9 @@
 export const searchBar = document.getElementById("search-bar");
 export const searchBtn = document.querySelector(".search-btn");
 
+export const imperialBtn = document.querySelector(".imperial");
+export const metricBtn = document.querySelector(".metric");
+
 export const location = document.querySelector(".location");
 export const mainTemp = document.querySelector(".temp");
 export const feelsLike = document.querySelector(".feels-like");
