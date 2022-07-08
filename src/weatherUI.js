@@ -12,6 +12,12 @@ import {
   humidityPercent,
 } from "./domElements";
 import { units } from "./units";
+import thunderIcon from "./img/weather-lightning.svg";
+import rainIcon from "./img/weather-rain.svg";
+import snowIcon from "./img/weather-snow.svg";
+import fogIcon from "./img/weather-fog.svg";
+import sunIcon from "./img/weather-sun.svg";
+import cloudIcon from "./img/weather-cloudy.svg";
 
 const DEGREE_SIGN = "\xB0";
 let tempUnit;
@@ -32,6 +38,23 @@ function displayWeather(_topic, data) {
   lowTemp.textContent = `${data.low} ${tempUnit}`;
   windSpeed.textContent = `${data.wind} ${speedUnit}`;
   humidityPercent.textContent = `${data.humidity}%`;
+  updateDescIcon(data.descID);
+}
+
+function updateDescIcon(id) {
+  if (id >= 200 && id < 300) {
+    descIcon.src = thunderIcon;
+  } else if (id >= 300 && id < 500) {
+    descIcon.src = rainIcon;
+  } else if (id >= 600 && id < 700) {
+    descIcon.src = snowIcon;
+  } else if (id >= 700 && id < 800) {
+    descIcon.src = fogIcon;
+  } else if (id === 800) {
+    descIcon.src = sunIcon;
+  } else {
+    descIcon.src = cloudIcon;
+  }
 }
 
 function updateUnits() {
