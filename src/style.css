@@ -215,10 +215,10 @@ input[type="search"] {
 
 #error-modal .message {
     color: var(--slate-700);
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     gap: 20px;
-    font-size: 1.5rem;
     margin-bottom: 20px;
 }
 
@@ -229,12 +229,12 @@ input[type="search"] {
 }
 
 #error-modal button {
+    background-color: #f87171;
     color: var(--slate-100);
     font-size: 1.2rem;
     font-weight: bold;
     width: 100%;
+    padding: 6px;
     border: none;
     border-radius: 6px;
-    background-color: #f87171;
-    padding: 6px;
 }
