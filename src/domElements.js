@@ -13,3 +13,6 @@ export const highTemp = document.querySelector(".high-temp");
 export const windSpeed = document.querySelector(".wind-speed");
 export const lowTemp = document.querySelector(".low-temp");
 export const humidityPercent = document.querySelector(".humidity-percent");
+
+export const errorModal = document.getElementById("error-modal");
+export const closeModalBtn = document.querySelector("#error-modal > button");
