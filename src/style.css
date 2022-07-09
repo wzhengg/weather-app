@@ -12,6 +12,7 @@
     --header-logo-size: 40px;
     --search-border-radius: 4px;
     --search-btn-size: 30px;
+    --details-icon-size: 1.5rem;
 }
 
 html, body {
@@ -114,7 +115,7 @@ input[type="search"] {
 .weather-card {
     background-color: var(--slate-200);
     display: grid;
-    grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+    grid-template: repeat(2, 1fr) / 2fr 1fr;
     column-gap: 50px;
     align-items: center;
     padding: 20px 40px;
@@ -135,7 +136,7 @@ input[type="search"] {
 }
 
 .temp {
-    font-size: 4rem;
+    font-size: 5rem;
 }
 
 .feels-like {
@@ -153,8 +154,49 @@ input[type="search"] {
     width: 3rem;
 }
 
+.details {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    width: 40%;
+    padding: 10px 0;
+}
+
 .high, .low, .wind, .humidity {
     display: flex;
     justify-content: space-between;
     font-size: 1.3rem;
+}
+
+.high > div:first-child,
+.low > div:first-child,
+.wind > div:first-child,
+.humidity > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.high .icon {
+    background-image: url('./img/chevron-up.svg');
+    height: var(--details-icon-size);
+    width: var(--details-icon-size);
+}
+
+.low .icon {
+    background-image: url('./img/chevron-down.svg');
+    height: var(--details-icon-size);
+    width: var(--details-icon-size);
+}
+
+.wind .icon {
+    background-image: url('./img/wind.svg');
+    height: var(--details-icon-size);
+    width: var(--details-icon-size);
+}
+
+.humidity .icon {
+    background-image: url('./img/humidity.svg');
+    height: var(--details-icon-size);
+    width: var(--details-icon-size);
 }
