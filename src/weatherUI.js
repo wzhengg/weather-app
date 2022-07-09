@@ -1,9 +1,5 @@
 import PubSub from "pubsub-js";
-import {
-  FETCH_WEATHER_ERROR,
-  UNITS_CHANGED,
-  WEATHER_DATA_UPDATED,
-} from "./pubsubTopics";
+import { UNITS_CHANGED, WEATHER_DATA_UPDATED } from "./pubsubTopics";
 import {
   location,
   mainTemp,
@@ -59,13 +55,8 @@ function updateUnits() {
   }
 }
 
-function displayError() {
-  alert("Could not find location");
-}
-
 export default function initWeatherUI() {
   updateUnits();
   PubSub.subscribe(UNITS_CHANGED, updateUnits);
   PubSub.subscribe(WEATHER_DATA_UPDATED, displayWeather);
-  PubSub.subscribe(FETCH_WEATHER_ERROR, displayError);
 }
