@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500&display=swap');
 
 :root {
     font-size: 16px;
@@ -7,6 +7,7 @@
     --slate-300: #cbd5e1;
     --slate-400: #94a3b8;
     --slate-500: #64748b;
+    --slate-600: #475596;
     --slate-700: #334155;
     --blue-400: #60a5fa;
     --header-logo-size: 40px;
@@ -199,4 +200,41 @@ input[type="search"] {
     background-image: url('./img/humidity.svg');
     height: var(--details-icon-size);
     width: var(--details-icon-size);
+}
+
+#error-modal {
+    background-color: var(--slate-100);
+    padding: 25px;
+    border: 2px solid var(--slate-600);
+    border-radius: 10px;
+}
+
+#error-modal::backdrop {
+    background: rgb(0 0 0 / 0.3);
+}
+
+#error-modal .message {
+    color: var(--slate-700);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+#error-modal .icon {
+    background-image: url('./img/emoticon-sad.svg');
+    height: 3rem;
+    width: 3rem;
+}
+
+#error-modal button {
+    color: var(--slate-100);
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    background-color: #f87171;
+    padding: 6px;
 }
