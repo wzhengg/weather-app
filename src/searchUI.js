@@ -21,7 +21,7 @@ function displayError() {
 }
 
 export default function initSearch() {
-  PubSub.subscribe(FETCH_WEATHER_ERROR, displayError);
-  closeModalBtn.addEventListener("click", () => errorModal.close());
   searchBtn.addEventListener("click", search);
+  closeModalBtn.addEventListener("click", () => errorModal.close());
+  PubSub.subscribe(FETCH_WEATHER_ERROR, displayError);
 }
